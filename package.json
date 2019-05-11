@@ -1,0 +1,20 @@
+{
+  "name": "personal",
+  "version": "1.0.0",
+  "description": "Minh's Personal Project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Minhtality.me"
+  ],
+  "author": "Minh Tran",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.5.7",
+    "nodejs": "0.0.0",
+    "pug": "^2.0.3"
+  }
+}
