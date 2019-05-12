@@ -1,0 +1,24 @@
+Title: May 10, 2019 | The First Push
+Author: Minh Tran
+Body: Today, I tried to get more familiar with digital ocean droplets
+deployments. I have yet linked my domain to the hosting service due to the fact
+that I have yet to have a landing page. I'm not sure if bootstrap works well
+with PUG (formerly Jade), a templating engine. The plan of action for tomorrow
+is to do some more research on what kind of technology to use to pretty up my
+landing page. After that, I would say I need to do the RESTFUL routings for
+CRUD. Maybe I'm doing it all backwards...I don't know.
+
+Ideally, I would like to have a nice landing page with HTML, CSS, and some
+vanilla JS. Like a..nice Nav Bar with the icons to my linkedIn and Instagram.
+I would need an about me page for the index page to explain to people WTF am I
+trying to do with this on-going project.THEN, do the REST routings for the CRUD
+of my blogs. For now, I would have to write my regular blogs in a notepad haha.
+I would also need to add authentications afterwards. Lets see... after all of
+that out of the way, I should be good to deploy the website! WHO HOO!!! oh yeah
+and push it to github (already did that).
+I would need to send a pull request in the host server.Shouldn't be too bad,
+Right? Okay, it's getting late. I will tackle on more stuff tomorrow. Thank you
+for reading my rambles.
+
+Next time, I will try to write in more details on what I struggled on and where
+I got stuck.
