@@ -7,4 +7,4 @@ thinking that PUG is such a cool name but now I'm like...damn this is getting
 hard to keep track of my indents. Don't get me wrong, it looks hella a lot cleaner
 though. For the most part, I didn't accomplish much today. Tomorrow I should be good to
 get started more on the CSS part of the job. The pathing for the profile picture,
-I need to get 
+I need to get that working as well.
