@@ -28,17 +28,20 @@ app.set('view engine', 'pug');
 
 //Home Route
 app.get('/',function(req, res){
-  Blog.find({},function(err, blogs){
-    if(err){
-      console.log(err);
-    }else {
-      res.render('index',{
-        title:'Blogs',
-        blogs: blogs
-      });
-    }
-  });
+  res.render('home');
 });
+// app.get('/',function(req, res){
+//   Blog.find({},function(err, blogs){
+//     if(err){
+//       console.log(err);
+//     }else {
+//       res.render('index',{
+//         title:'Blogs',
+//         blogs: blogs
+//       });
+//     }
+//   });
+// });
 
 
 //Add Route
