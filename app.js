@@ -22,6 +22,8 @@ const app = express();
 //bring in Models
 let Blog = require('./models/blog');
 
+//Set Static Folder
+app.use(express.static(path.join(__dirname,'public')));
 //Load View Engine
 app.set('Views',path.join(__dirname,'Views'));
 app.set('view engine', 'pug');
@@ -30,7 +32,13 @@ app.set('view engine', 'pug');
 app.get('/',function(req, res){
   res.render('home');
 });
-// app.get('/',function(req, res){
+
+app.get('/*', function(req, res){
+  res.render('home');
+});
+
+// //WIP Route
+// app.get('/hidden',function(req, res){
 //   Blog.find({},function(err, blogs){
 //     if(err){
 //       console.log(err);
@@ -42,14 +50,14 @@ app.get('/',function(req, res){
 //     }
 //   });
 // });
-
-
-//Add Route
-app.get('/blogs/add', function(req,res){
-  res.render('add_blog',{
-    title:'Add blogs'
-  });
-});
+//
+//
+// //Add Route
+// app.get('/blogs/add', function(req,res){
+//   res.render('add_blog',{
+//     title:'Add blogs'
+//   });
+// });
 
 
 
