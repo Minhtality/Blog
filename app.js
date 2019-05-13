@@ -23,7 +23,7 @@ const app = express();
 //bring in Models
 let Blog = require('./models/blog');
 
-//Set Static Folder
+//Set Static Folder hello
 app.use(express.static(path.join(__dirname,'public')));
 //Load View Engine
 app.set('Views',path.join(__dirname,'Views'));
