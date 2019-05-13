@@ -36,7 +36,7 @@ app.use(bodyParser.json())
 
 //Home Route
 app.get('/',function(req, res){
-  res.render('home');
+  res.render('home.ejs');
 });
 
 app.get('/*',function(req, res){
