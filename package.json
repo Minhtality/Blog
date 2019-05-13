@@ -12,6 +12,9 @@
   "author": "Minh Tran",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "bower": "^1.8.8",
+    "ejs": "^2.6.1",
     "express": "^4.16.4",
     "mongoose": "^5.5.7",
     "nodejs": "0.0.0",
