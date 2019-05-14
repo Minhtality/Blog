@@ -13,4 +13,4 @@ ERROR: "Failed to look up view". After about an hour of researching on stackover
 My dumbass named my directory as Views instead of views (apparently MacOS does't care about case sensitivity). For those newbies like me
 out there. camelCase! Anyway, if you are reading this now, that means I have already added more blogging features. (:
 I could probably write more but my brain is fried from coding all day...GOOD NIGHT. Oh, did I already tell you that Ubuntu is
-CASE SENSITIVE??!?!? /sigh.
+CASE SENSITIVE??!?!? /sigh...
