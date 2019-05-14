@@ -1,0 +1,16 @@
+Title: Ubuntu is WHAT?
+Author: Minh Tran
+Body: Today was a roller coaster of emotions. I was having a good time setting up nav bars and getting use to PUGJS.
+Oh my god, I can't even begin to tell you how frustrated I was with PUG. Good name, but writing code is such a pain with it.
+I ended up switching back to what I'm familiar with, EJS. A friend of mine told me to look into VUEJS, angular, and react.
+For now, EJS will have to do. "MVP" (Minimal viable product), he called it. After switching or to EJS, the css part was actually
+quite fun. I ended up getting stuck with the mobile responsive views. It's working, but not to my liking. I'm going to come
+back to it later this week.
+
+Now, on to the deploying part. Domain name? Easy. Hosting service sign up? Easy. Using the command lines for Ubuntu? Sweet.
+Everything was going perfect. Installed all dependencies without problems? YES! And then...
+ERROR: "Failed to look up view". After about an hour of researching on stackoverflow... It turns out that Ubuntu is CASE SENSITIVE!!
+My dumbass named my directory as Views instead of views (apparently MacOS does't care about case sensitivity). For those newbies like me
+out there. camelCase! Anyway, if you are reading this now, that means I have already added more blogging features. (:
+I could probably write more but my brain is fried from coding all day...GOOD NIGHT. Oh, did I already tell you that Ubuntu is
+CASE SENSITIVE??!?!? /sigh.
