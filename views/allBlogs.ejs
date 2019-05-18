@@ -1,4 +1,12 @@
 <% include ./partials/header %>
 
+<div class="container all">
+  <h1><%=title %></h1>
+  <ul class="list-group">
+    <% blogs.forEach(function(blog){ %>
+    <a href="/allBlogs/<%=blog._id%>" +  > <li class="list-group-item"><%=blog.title %></li> </a>
+    <% }); %>
+  </ul>
+</div>
 
 <% include ./partials/footer %>
