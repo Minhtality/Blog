@@ -15,8 +15,8 @@ $(document).ready(function() {
         });
     });
 
-    $('.alert').on('click', function(e){
-        $(".alert").alert('close');
+    $('.alert').on('mouseenter', function(e){
+        $(this).alert('close');
     });
 
 });

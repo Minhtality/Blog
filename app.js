@@ -122,6 +122,17 @@ app.post('/allBlogs/edit/:id', function(req, res) {
 
 //POST a blog Route
 app.post('/allBlogs/add', function(req, res) {
+    req.checkBody('title','Title required').notEmpty();
+    req.checkBody('author','Author required').notEmpty();
+    req.checkBody('body','Body required').notEmpty();
+    //get error if any
+    let errors = req.validationErrors();
+    if(errors){
+      res.render('allBlogs_add',{
+        title: 'Add a blog',
+        errors:errors
+      });
+    } else {
     let blog = new Blog();
     blog.title = req.body.title;
     blog.author = req.body.author;
@@ -130,26 +141,28 @@ app.post('/allBlogs/add', function(req, res) {
         if (err) {
             console.log(err);
             return;
-        } else {
+          } else {
             req.flash('success','Blog Added');
             res.redirect('/allBlogs');
-        }
-    });
+          }
+      });
+    }
 });
+
 
 //delete a blog Route
 app.delete('/allBlogs/:id', function(req, res) {
     let query = {
         _id: req.params.id
     }
-
     Blog.remove(query, function(err) {
         if (err) {
             console.log(err);
         }
         res.send('success');
     });
-});
+}); 
+
 
 //view a blog by id Route
 app.get('/allBlogs/:id', function(req, res) {
