@@ -46,7 +46,7 @@ router.post('/edit/:id', function(req, res) {
         _id: req.params.id
     }
 
-    Blog.update(query, blog, function(err) {
+    Blog.updateOne(query, blog, function(err) {
         if (err) {
             console.log(err);
             return;
@@ -92,7 +92,7 @@ router.delete('/:id', function(req, res) {
     let query = {
         _id: req.params.id
     }
-    Blog.remove(query, function(err) {
+    Blog.deleteOne(query, function(err) {
         if (err) {
             console.log(err);
         }

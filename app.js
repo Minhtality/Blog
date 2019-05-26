@@ -8,7 +8,10 @@ const flash = require('connect-flash');
 const session = require('express-session');
 
 //connect to DB
-mongoose.connect('mongodb://localhost/Personal');
+mongoose.connect('mongodb://localhost/Personal',{
+    useCreateIndex: true,
+    useNewUrlParser: true
+});
 let db = mongoose.connection;
 
 //check for DB connection
@@ -63,14 +66,14 @@ app.use(function (req, res, next) {
 //express validator Middleware
 app.use(expressValidator());﻿
 
-//Home Route
-app.get('/', function(req, res) {
-    res.render('home.ejs');
-});
+//Home route test
+let home = require('./routes/home');
+app.use('/', home);
+
 
 //route files
-let blogs = './routes/blogs';
-app.use('/allBlogs', require('./routes/blogs.js'));
+let blogs = require('./routes/blogs');
+app.use('/allBlogs', blogs);
 
 
 //Host Port
