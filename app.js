@@ -12,6 +12,7 @@ mongoose.connect('mongodb://localhost/Personal',{
     useCreateIndex: true,
     useNewUrlParser: true
 });
+
 let db = mongoose.connection;
 
 //check for DB connection
