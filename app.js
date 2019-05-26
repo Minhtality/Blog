@@ -67,116 +67,13 @@ app.use(expressValidator());﻿
 app.get('/', function(req, res) {
     res.render('home.ejs');
 });
-//Blogs Route
-app.get('/allBlogs', function(req, res) {
-    Blog.find({}, function(err, blogs) {
-        if (err) {
-            console.log(err);
-        } else {
-            res.render('allBlogs', {
-                title: 'My Blogs',
-                blogs: blogs
-            });
-        }
-    });
-});
 
-//Add a blog route
-app.get('/allBlogs/add', function(req, res) {
-    res.render('allBlogs_add', {
-        title: 'Add a blog'
-    });
-});
-
-//Edit a blog Route
-app.get('/allBlogs/edit/:id', function(req, res) {
-    Blog.findById(req.params.id, function(err, blogs) {
-        res.render('allBlogs_edit', {
-            title: 'Edit entry',
-            blogs: blogs
-        });
-    });
-});
-
-//Update a blog Route
-app.post('/allBlogs/edit/:id', function(req, res) {
-    let blog = {};
-    blog.title = req.body.title;
-    blog.author = req.body.author;
-    blog.body = req.body.body;
-
-    let query = {
-        _id: req.params.id
-    }
-
-    Blog.update(query, blog, function(err) {
-        if (err) {
-            console.log(err);
-            return;
-        } else {
-            req.flash('info','Blog saved');
-            res.redirect('/allBlogs');
-        }
-    });
-});
-
-//POST a blog Route
-app.post('/allBlogs/add', function(req, res) {
-    req.checkBody('title','Title required').notEmpty();
-    req.checkBody('author','Author required').notEmpty();
-    req.checkBody('body','Body required').notEmpty();
-    //get error if any
-    let errors = req.validationErrors();
-    if(errors){
-      res.render('allBlogs_add',{
-        title: 'Add a blog',
-        errors:errors
-      });
-    } else {
-    let blog = new Blog();
-    blog.title = req.body.title;
-    blog.author = req.body.author;
-    blog.body = req.body.body;
-    blog.save(function(err) {
-        if (err) {
-            console.log(err);
-            return;
-          } else {
-            req.flash('success','Blog Added');
-            res.redirect('/allBlogs');
-          }
-      });
-    }
-});
+//route files
+let blogs = './routes/blogs';
+app.use('/allBlogs', require('./routes/blogs.js'));
 
 
-//delete a blog Route
-app.delete('/allBlogs/:id', function(req, res) {
-    let query = {
-        _id: req.params.id
-    }
-    Blog.remove(query, function(err) {
-        if (err) {
-            console.log(err);
-        }
-        res.send('success');
-    });
-}); 
-
-
-//view a blog by id Route
-app.get('/allBlogs/:id', function(req, res) {
-    Blog.findById(req.params.id, function(err, blogs) {
-        res.render('viewBlog', {
-            blogs: blogs
-        });
-    });
-});
-
-
-
-
-
+//Host Port
 app.listen(80, function() {
     console.log('Local server has started on port 80!');
 });
