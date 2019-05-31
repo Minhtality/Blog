@@ -1,0 +1,38 @@
+<% include ./partials/header %>
+
+
+<form class="container user" action="/users/register" method="post" >
+  <h1>Register</h1>
+  <div class="form-group">
+    <label>Name:</label>
+    <input class="form-control" type="text" name="name">
+  </div>
+
+  <div class="form-group">
+    <label>Email:</label>
+    <input class="form-control" type="text" name="email">
+  </div>
+
+  <div class="form-group">
+    <label>User name:</label>
+    <input class="form-control" type="text" name="username" >
+  </div>
+
+    <div class="form-group">
+    <label>Password:</label>
+    <input class="form-control" type="password" name="password">
+  </div>
+
+    <div class="form-group">
+    <label>Confirm Password:</label>
+    <input class="form-control" type="password" name="password2">
+  </div>
+
+  <br>
+
+    <input class="btn btn-primary" type="Submit" value="Submit">
+
+</form>
+<br>
+<hr>
+<% include ./partials/footer %>

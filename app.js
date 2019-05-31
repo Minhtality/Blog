@@ -30,6 +30,7 @@ const app = express();
 
 //bring in Models
 let Blog = require('./models/blog');
+let User = require('./models/user');
 
 //Load View Engine
 app.set('views', path.join(__dirname, 'views'));
@@ -67,14 +68,18 @@ app.use(function (req, res, next) {
 //express validator Middleware
 app.use(expressValidator());﻿
 
-//Home route test
+//Home route 
 let home = require('./routes/home');
 app.use('/', home);
 
 
-//route files
+//route blogs
 let blogs = require('./routes/blogs');
 app.use('/allBlogs', blogs);
+
+//route users 
+let users = require('./routes/users');
+app.use('/users', users);
 
 
 //Host Port
