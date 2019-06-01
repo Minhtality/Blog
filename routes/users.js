@@ -1,10 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const bcrypt = require('bcryptjs');
-const passport = require('passport');
-
+const express   = require('express'),
+      router    = express.Router(),
+      bcrypt    = require('bcryptjs'),
+      passport  = require('passport');
 //bring in user Models
-let User = require('../models/user');
+let  User       = require('../models/user');
 
 // User get route
 router.get('/register', function(req, res){

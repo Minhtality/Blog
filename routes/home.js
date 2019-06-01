@@ -1,5 +1,5 @@
-const express = require('express');
-const router = express.Router();
+const express   = require('express'),
+      router    = express.Router();
 
 //Home Route
 router.get('/', function(req, res) {

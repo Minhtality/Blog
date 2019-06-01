@@ -1,8 +1,8 @@
-const express = require('express');
-const router = express.Router();
+const express   = require('express'),
+      router    = express.Router();
 
 //bring in blogs Models
-let Blog = require('../models/blog');
+let Blog        = require('../models/blog');
 
 //Blogs Route
 router.get('/', function(req, res) {
@@ -98,7 +98,7 @@ router.delete('/:id', function(req, res) {
         }
         res.send('success');
     });
-}); 
+});
 
 
 //view a blog by id Route
