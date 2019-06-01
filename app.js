@@ -1,11 +1,14 @@
-const express = require("express");
-const path = require("path");
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const ejs = require('ejs');
-const expressValidator = require('express-validator');
-const flash = require('connect-flash');
-const session = require('express-session');
+const express           = require("express"),
+      path              = require("path"),
+      mongoose          = require('mongoose'),
+      bodyParser        = require('body-parser'),
+      ejs               = require('ejs'),
+      expressValidator  = require('express-validator'),
+      flash             = require('connect-flash'),
+      session           = require('express-session'),
+      config            = require('./config/database'),
+      passport          = require('passport');
+
 
 //connect to DB
 mongoose.connect('mongodb://localhost/Personal',{
@@ -68,7 +71,16 @@ app.use(function (req, res, next) {
 //express validator Middleware
 app.use(expressValidator());﻿
 
-//Home route 
+//bring in passport config
+require('./config/passport')(passport);
+app.use(passport.initialize());
+app.use(passport.session());
+app.get('*', function(req, res, next){
+  res.locals.user =  req.user || null;
+  next();
+});
+
+//Home route
 let home = require('./routes/home');
 app.use('/', home);
 
@@ -77,7 +89,7 @@ app.use('/', home);
 let blogs = require('./routes/blogs');
 app.use('/allBlogs', blogs);
 
-//route users 
+//route users
 let users = require('./routes/users');
 app.use('/users', users);
 
