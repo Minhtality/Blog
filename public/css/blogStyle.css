@@ -201,16 +201,16 @@
     bottom: 0;
     z-index: -1;
   }
-  .blog-card.alt {
+  .blog-card:nth-child(odd) {
     flex-direction: row-reverse;
   }
-  .blog-card.alt .description:before {
+  .blog-card:nth-child(odd) .description:before {
     left: inherit;
     right: -10px;
     -webkit-transform: skew(3deg);
             transform: skew(3deg);
   }
-  .blog-card.alt .details {
+  .blog-card:nth-last-child(odd) .details {
     padding-left: 25px;
   }
 }

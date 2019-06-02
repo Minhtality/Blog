@@ -15,7 +15,7 @@
         <% if(typeof blog.body == 'undefined'){ %>
             <p> no content</p>
         <% } else { %>
-            <p> <%= blog.body.substring(0, 84) %>...</p>
+            <p> <%- blog.body.substring(0,90) %>...</p>
 <%}%>
         <p class="read-more">
           <a href="/allBlogs/<%=blog._id%>">Read More</a>
