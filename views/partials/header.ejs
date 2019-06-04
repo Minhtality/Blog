@@ -19,9 +19,11 @@
       <li class="nav-item active">
         <a class="nav-link" href="/allBlogs">Blogs <span class="sr-only">(current)</span></a>
       </li>
+        <%if(locals.user){ %>
       <li class="nav-item">
         <a class="nav-link" href="/allBlogs/add">Add Blog</a>
       </li>
+      <%}%>
     </ul>
     <%if(locals.user){ %>
       <ul class="navbar-nav">
