@@ -2,12 +2,17 @@
 
 <div class="container view">
   <h1><%=blogs.title %></h1>
-  <h5>Written By: <%=blogs.author %></h5>
+  <h5>Written By: <%=author %></h5>
   <p><%-blogs.body %></p>
   <br>
-<a href="/allBlogs/edit/<%=blogs._id%>"><button type="button" class="btn btn-warning btn-sm" name="btnEdit">Edit</button></a>
 
-<a href="#"><button data-id="<%=blogs._id%>" data-name="<%=blogs.title%>" type="button" class="btn btn-danger btn-sm delete-blog" name="btnDelete">Delete</button></a>
+<% if(user){ %>
+<%  if(user.id == blogs.author){ %>
+    <a href="/allBlogs/edit/<%=blogs._id%>"><button type="button" class="btn btn-warning btn-sm" name="btnEdit">Edit</button></a>
+
+    <a href="#"><button data-id="<%=blogs._id%>" data-name="<%=blogs.title%>" type="button" class="btn btn-danger btn-sm delete-blog" name="btnDelete">Delete</button></a>
+  <%}%>
+<%}%>
 
 </div>
 <% include ./partials/footer %>

@@ -28,8 +28,8 @@ module.exports = function(passport){
 			});
 		});
 	}));
-	
-//add in serializing 
+
+//add in serializing
 passport.serializeUser(function(user, done) {
 	done(null, user.id);
 });

@@ -1,8 +1,9 @@
-const express   = require('express'),
+const express     = require('express'),
       router    = express.Router();
 
-//bring in blogs Models
+//bring in blogs/users Models
 let Blog        = require('../models/blog');
+let User        = require('../models/user');
 
 //Blogs Route
 router.get('/', function(req, res) {
@@ -19,15 +20,19 @@ router.get('/', function(req, res) {
 });
 
 //Add a blog route
-router.get('/add', function(req, res) {
+router.get('/add', ensureAuthenticated, function(req, res) {
     res.render('allBlogs_add', {
         title: 'Add a blog'
     });
 });
 
 //Edit a blog Route
-router.get('/edit/:id', function(req, res) {
+router.get('/edit/:id', ensureAuthenticated, function(req, res) {
     Blog.findById(req.params.id, function(err, blogs) {
+      if(blogs.author != req.user._id){
+        req.flash('danger',"Unauthorized access");
+        return res.redirect('/allBlogs');
+      }
         res.render('allBlogs_edit', {
             title: 'Edit entry',
             blogs: blogs
@@ -60,7 +65,7 @@ router.post('/edit/:id', function(req, res) {
 //POST a blog Route
 router.post('/add', function(req, res) {
     req.checkBody('title','Title required').notEmpty();
-    req.checkBody('author','Author required').notEmpty();
+    // req.checkBody('author','Author required').notEmpty();
     req.checkBody('body','Body required').notEmpty();
     //get error if any
     let errors = req.validationErrors();
@@ -72,7 +77,7 @@ router.post('/add', function(req, res) {
     } else {
     let blog = new Blog();
     blog.title = req.body.title;
-    blog.author = req.body.author;
+    blog.author = req.user._id;
     blog.body = req.body.body;
     blog.save(function(err) {
         if (err) {
@@ -89,25 +94,47 @@ router.post('/add', function(req, res) {
 
 //delete a blog Route
 router.delete('/:id', function(req, res) {
+  if(!req.user._id){
+    res.status(500).send();
+  }
     let query = {
         _id: req.params.id
     }
-    Blog.deleteOne(query, function(err) {
-        if (err) {
-            console.log(err);
-        }
-        res.send('success');
-    });
+  Blog.findById(req.params.id, function(err, blogs){
+    if(blogs.author != req.user._id){
+      res.status(500).send();
+    } else {
+      Blog.deleteOne(query, function(err) {
+          if (err) {
+              console.log(err);
+          }
+          res.send('success');
+      });
+    }
+  });
 });
 
 
 //view a blog by id Route
 router.get('/:id', function(req, res) {
     Blog.findById(req.params.id, function(err, blogs) {
+      User.findById(blogs.author, function(err,user){
         res.render('viewBlog', {
-            blogs: blogs
+            blogs: blogs,
+            author:user.name
         });
+      });
     });
 });
+
+//access control
+function ensureAuthenticated(req, res, next){
+  if(req.isAuthenticated()){
+    return next()
+  } else {
+    req.flash('danger',"Please signup/login");
+    res.redirect('/users/login');
+  }
+};
 
 module.exports = router;
