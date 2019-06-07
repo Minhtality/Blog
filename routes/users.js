@@ -4,6 +4,7 @@ const express   = require('express'),
       passport  = require('passport');
 //bring in user Models
 let  User       = require('../models/user');
+let  Blog       = require('../models/blog');
 
 // User get route
 router.get('/register', function(req, res){
@@ -71,7 +72,19 @@ router.post('/register', function(req, res){
         });
     }
 });
-
+//user profile
+router.get('/:id/profile', function(req, res){
+  Blog.find({}, function(err, blogs) {
+      if (err) {
+          console.log(err);
+      } else {
+          res.render('profile', {
+              title: 'My Blogs',
+              blogs: blogs,
+          });
+      }
+  });
+});
 //logout route
 router.get('/logout', function(req, res){
   req.logOut();
