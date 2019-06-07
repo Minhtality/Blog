@@ -29,14 +29,15 @@ router.get('/add', ensureAuthenticated, function(req, res) {
 //Edit a blog Route
 router.get('/edit/:id', ensureAuthenticated, function(req, res) {
     Blog.findById(req.params.id, function(err, blogs) {
-      if(blogs.author != req.user._id){
-        req.flash('danger',"Unauthorized access");
-        return res.redirect('/allBlogs');
-      }
+      if(blogs.author == req.user._id || req.user.username == 'Admin'){
         res.render('allBlogs_edit', {
             title: 'Edit entry',
             blogs: blogs
         });
+      } else {
+        req.flash('danger',"Unauthorized access");
+        return res.redirect('/allBlogs');
+      }
     });
 });
 
@@ -101,15 +102,15 @@ router.delete('/:id', function(req, res) {
         _id: req.params.id
     }
   Blog.findById(req.params.id, function(err, blogs){
-    if(blogs.author != req.user._id){
-      res.status(500).send();
-    } else {
+    if(blogs.author == req.user._id || req.user.username == 'Admin'){
       Blog.deleteOne(query, function(err) {
           if (err) {
               console.log(err);
           }
           res.send('success');
       });
+    } else {
+      res.status(500).send();
     }
   });
 });
