@@ -9,7 +9,7 @@ body {
   content: '';
   height: 100vh;
   width: 100%;
-  background-image: url(https://images.unsplash.com/photo-1541422348463-9bc715520974?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80);
+  background-image: url(https://images.unsplash.com/photo-1428908728789-d2de25dbd4e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -42,7 +42,7 @@ body {
   width: 160px;
   object-fit: cover;
   border-radius: 50%;
-  filter: grayscale(70%);
+  
 }
 
 
@@ -51,6 +51,7 @@ body {
   font-style: italic;
   margin-top: .2rem;
   color: #333;
+  border: 1rem;
 
 }
 
