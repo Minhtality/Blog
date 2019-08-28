@@ -1,25 +1,40 @@
 <% include ./partials/header %>
 
-<form class="container edit" action="/allBlogs/edit/<%=blogs._id%>" method="post" >
+<form
+  class="container edit"
+  action="/projects/allBlogs/edit/<%=blogs._id%>"
+  method="post"
+>
   <h1><%=title %></h1>
   <div class="form-group">
     <label>Title:</label>
-    <input class="form-control" type="text" name="title" value="<%=blogs.title%>">
+    <input
+      class="form-control"
+      type="text"
+      name="title"
+      value="<%=blogs.title%>"
+    />
   </div>
 
   <div class="form-group">
-    <input class="form-control hidden" type="hidden" name="author" value="<%=blogs.author%>">
+    <input
+      class="form-control hidden"
+      type="hidden"
+      name="author"
+      value="<%=blogs.author%>"
+    />
   </div>
 
   <div class="form-group">
     <label>Body:</label>
-    <textarea class="form-control" name="body" rows="4" ><%=blogs.body%></textarea>
+    <textarea class="form-control" name="body" rows="4">
+<%=blogs.body%></textarea
+    >
   </div>
-  <br>
+  <br />
 
-    <input class="btn btn-primary" type="Submit" value="Submit">
-
+  <input class="btn btn-primary" type="Submit" value="Submit" />
 </form>
-<br>
-<hr>
+<br />
+<hr />
 <% include ./partials/footer %>
